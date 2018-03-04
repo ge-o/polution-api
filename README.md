@@ -7,6 +7,8 @@ The value are available for every hour for the 4 stations the polution NO2.
 
 You can find the original data under: https://www.lanuv.nrw.de/umwelt/luft/immissionen/berichte-und-trends/einzelwerte-kontinuierlicher-messungen/
 
+I buildt this at the hackathon of the OpenData Day Cologne 2018. 
+
 ## Whats next
 
 - Enhance the import to other polution types
