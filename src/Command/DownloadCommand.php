@@ -33,6 +33,8 @@ class DownloadCommand extends ContainerAwareCommand
 
     protected $stations;
 
+    protected $measureRepo;
+
     const DATE_ROW = 'A';
     const TIME_ROW = 'B';
 
@@ -66,7 +68,7 @@ class DownloadCommand extends ContainerAwareCommand
         $this->em = $this->getContainer()->get('doctrine.orm.entity_manager');
         /** @var RepositoryFactory $stationRepo */
         $stationRepo = $this->em->getRepository('App:Station');
-        $measureRepo = $this->em->getRepository('App:MeasureData');
+        $this->measureRepo = $this->em->getRepository('App:MeasureData');
         $this->stations = $stationRepo->findAll();
 
         /** @var Csv $reader */
@@ -91,8 +93,11 @@ class DownloadCommand extends ContainerAwareCommand
         $output->writeln('Data imported');
     }
 
-    protected function saveMeasureData($line, $date, $station)
+    protected function saveMeasureData($line, \DateTime $date, Station $station)
     {
+        if ($this->measureRepo->findOneBy(['station' => $station, 'measureDate' => $date])) {
+            return;
+        }
         $m = new MeasureData();
         $m->setMeasureDate($date);
         $val = $this->spreadsheet->getActiveSheet()->getCell('AX'.$line)->getValue();
