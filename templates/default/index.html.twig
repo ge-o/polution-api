@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Polution API for Cologne</h1>
+    <p>This API provides polution data from LANUV (Landesamt für Natur, Umwelt und Verbraucherschutz) for the 4 measure stations in Cologne.</p>
+
+    <p>The value are available for every hour for the 4 stations the polution NO2.</p>
+
+    <p>You can find the original data under: <a href="https://www.lanuv.nrw.de/umwelt/luft/immissionen/berichte-und-trends/einzelwerte-kontinuierlicher-messungen/">https://www.lanuv.nrw.de/umwelt/luft/immissionen/berichte-und-trends/einzelwerte-kontinuierlicher-messungen/</a></p>
+
+    <p>You can find the API Documentation <a href="/api/docs">here</a></p>
+    <h2>Whats next</h2>
+    <ul>
+        <li>Enhance the import to other polution types</li>
+        <li>Enhance data for other stations in NRW</li>
+    </ul>
+
+    <p>Feel free to contribute under: <a href="https://github.com/ge-o/polution-api">https://github.com/ge-o/polution-api</a></p>
+{% endblock %}
